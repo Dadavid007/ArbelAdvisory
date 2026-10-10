@@ -217,7 +217,10 @@
         <p class="contact-mail">Ou écrivez-nous directement : <a href="mailto:contact@arbeladvisory.fr">contact@arbeladvisory.fr</a></p>
       </div>
 
-      <form class="cform" id="contact-form" novalidate>
+      <form class="cform" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="0a2f74df-c1d2-4f66-91e6-aecc027b1b93">
+        <input type="hidden" name="subject" value="Nouvelle demande de contact - Arbel Advisory">
+        <input type="hidden" name="from_name" value="Site Arbel Advisory">
         <h3>Vos coordonnées</h3>
         <div class="row2">
           <div class="field"><input type="text" id="nom" name="nom" placeholder="Nom*" required></div>
@@ -271,7 +274,7 @@
         <div class="submit-row">
           <button type="submit">Envoyer votre message</button>
         </div>
-        <p class="rgpd">Conformément à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données qui vous concernent. Votre message s'ouvre dans votre messagerie, adressé à contact@arbeladvisory.fr.</p>
+        <p class="rgpd">Conformément à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données qui vous concernent. Votre message est transmis à Arbel Advisory par le service Web3Forms.</p>
       </form>
     </div>
   </section>
@@ -286,27 +289,5 @@
 </footer>
 
 
-<script>
-  document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    var f = this;
-    if (!f.reportValidity()) { return; }
-    var v = function (id) { return (document.getElementById(id).value || "").trim(); };
-    var lignes = [
-      "Nom : " + v("nom") + " " + v("prenom"),
-      "Société : " + v("societe"),
-      "Email : " + v("email"),
-      "Téléphone : " + v("telephone"),
-      "Activité : " + v("activite"),
-      "Chiffre d'affaires : " + v("ca"),
-      "Localisation du siège : " + v("localisation"),
-      "Créneau souhaité : " + v("creneau"),
-      "",
-      v("description")
-    ];
-    var subject = "Demande : " + v("motif");
-    window.location.href = "mailto:contact@arbeladvisory.fr?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lignes.join("\n"));
-  });
-</script>
 </body>
 </html>
